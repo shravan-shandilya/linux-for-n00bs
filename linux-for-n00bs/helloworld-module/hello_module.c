@@ -7,13 +7,13 @@ MODULE_AUTHOR("Shravan Shandilya");
 
 static int __init mod_init(void)
 {
-	printk(KERN_DEBUG"Hello,Module");
+	printk(KERN_DEBUG"Hello,Module \n");
 	return 0;
 }
 
 static void __exit mod_clean(void)
 {
-	printk(KERN_DEBUG"Module removed!!");
+	printk(KERN_DEBUG"Module removed!! \n");
 }
 module_init(mod_init);
 module_exit(mod_clean);
