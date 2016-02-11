@@ -1,14 +1,16 @@
 obj-m += hello_module.o
-installed_kernel:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modulesi
-	export CUST_KERNEL="n"
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+        DEF_KERNEL := "/lib/modules/$(shell uname -r)/build"
 clean:
-#	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
-	ifeq($(CUST_KERNEL),n)
-		make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
-	else
-		make -C $(KDIR) M=$(PWD) clean
-	endif
-custom_kernel:
-	make -C $(KDIR) M=$(PWD) modules
-	export CUST_KERNEL="y"
+	$(info cleaning with $(DEF_KERNEL))
+	make -C $(DEF_KERNEL) M=$(PWD) clean
+kernel:
+	$(info DEF $(DEF_KERNEL))
+        ifdef KDIR
+		$(info Using kernel $(KDIR))
+		make -C $(KDIR) M=$(PWD) modules
+                DEF_KERNEL := $(KDIR)
+        else
+		$(error Please export KDIR)
+        endif
