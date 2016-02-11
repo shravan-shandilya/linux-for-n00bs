@@ -1,8 +1,9 @@
 Usage:
 1.To build the against existing kernel
-	$ make
-2.To buils against any installed kernel
-	$ make
+	$ make all
+2.To build against any installed kernel
+	$ export KDIR=/lib/modules/<your-kernel>/build
+	$ make kernel
 
 To clear dmesg buffer:
 	$ sudo dmesg -C
