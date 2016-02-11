@@ -12,7 +12,10 @@ Observations:
 1.The "\n" was not included in printk statements.So,the output of printk messages were not reflected on dmesg.
 2.Usage of __init and __exit http://stackoverflow.com/questions/11680641/init-and-exit-macros-usage-for-built-in-and-loadable-modules
 3.If you use __init for mod_clean function..you will not be able to remove the module as that function will be removed from memory because of __init. 
+4.In the makefile..if the first character is not a <TAB> but a space(for indentation),it will be executed as shell command.
+https://compgroups.net/comp.unix.programmer/ifdef-not-working-in-gnu-make-version-3/53220
 
+5.If the Current directory varaible (M) is used as (m),got some permission denied error.(Couldn't get to the root of the error)    
 
 
 Kernel Log Level:
